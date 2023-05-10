@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="my_primary">#A61B1C</color>
+    <color name="my_secondary">#F9CFCD1D</color>
+    <color name="my_statusbar">#F0252A9E</color>
+    <color name="my_text">#F007E8D5</color>
 </resources>
