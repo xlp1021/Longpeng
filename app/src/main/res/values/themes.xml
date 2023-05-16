@@ -1,12 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.LongpengsAndroidLabs" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.LongpengsAndroidLabs" parent="Theme.MaterialComponents.DayNight">
         <!--Primary brand color -->
-        <item name="colorPrimary">@color/my_primary</item>
+        <item name="colorPrimary">#05ABDD</item>
         <!--Secondary Primary brand color -->
         <item name="colorSecondary">@color/my_secondary</item>
         <!--Status bar color -->
         <item name="android:statusBarColor">@color/my_statusbar</item>
+        <item name="android:textColor">@color/my_text</item>
     </style>
 
 </resources>
