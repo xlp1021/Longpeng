@@ -1,15 +1,15 @@
 package algonquin.cst2335.xu000282;
 
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,7 +18,6 @@ import java.util.Date;
 import algonquin.cst2335.xu000282.data.ChatMessage;
 import algonquin.cst2335.xu000282.data.ChatRoomViewModel;
 import algonquin.cst2335.xu000282.databinding.ActivityChatRoomBinding;
-import algonquin.cst2335.xu000282.databinding.ActivityMainBinding;
 import algonquin.cst2335.xu000282.databinding.ReceiveMessageBinding;
 import algonquin.cst2335.xu000282.databinding.SentMessageBinding;
 
@@ -113,4 +112,4 @@ public class ChatRoom extends AppCompatActivity {
             timeText = itemView.findViewById(R.id.time);
         }
     }
-}}
+}
