@@ -6,14 +6,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
-
-import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,6 +43,8 @@ public class ChatRoom extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         chatModel = new ViewModelProvider(this).get(ChatRoomViewModel.class);
+
+
         messages = chatModel.messages.getValue();
         if (messages == null) {
             messages = new ArrayList<>();
@@ -57,6 +58,17 @@ public class ChatRoom extends AppCompatActivity {
 
         MessageDatabase db = Room.databaseBuilder(getApplicationContext(), MessageDatabase.class, "database-name").build();
         mDAO = db.cmDAO();
+
+        chatModel.selectedMessage.observe(this, (newMessageValue) -> {
+
+            MessageDetailsFragment chatFragment = new MessageDetailsFragment(newMessageValue); //newValue is the newly set ChatMessage
+            FragmentManager fMgr = getSupportFragmentManager();
+            FragmentTransaction tx = fMgr.beginTransaction();
+            tx.replace(R.id.fragmentLocation, chatFragment);
+            tx.addToBackStack(null);
+            tx.commit();
+
+        });
 
         binding.sendButton.setOnClickListener(click -> {
             String messageText = binding.textInput.getText().toString();
@@ -124,6 +136,8 @@ public class ChatRoom extends AppCompatActivity {
         });
 
         binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
+
+
     }
 
     public class MyRowHolder extends RecyclerView.ViewHolder {
@@ -134,6 +148,12 @@ public class ChatRoom extends AppCompatActivity {
             super(itemView);
 
             itemView.setOnClickListener(clk ->{
+
+                int position = getAbsoluteAdapterPosition();
+                ChatMessage selected = messages.get(position);
+
+                chatModel.selectedMessage.postValue(selected);
+                /*
                 int position = getAbsoluteAdapterPosition();
 
 
@@ -160,7 +180,7 @@ public class ChatRoom extends AppCompatActivity {
                     });
                 });
                 AlertDialog dialog = builder.create();
-                dialog.show();
+                dialog.show();*/
             });
 
             messageText = itemView.findViewById(R.id.message);

@@ -30,7 +30,10 @@ public class ChatMessage {
     public String getMessage() {
         return message;
     }
-    public String getTimeSent() {return timeSent;}
+
+    public String getTimeSent() {
+        return timeSent;
+    }
 
     public boolean isSentButton() {
         return isSentButton;

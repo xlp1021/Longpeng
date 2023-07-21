@@ -1,6 +1,5 @@
 package algonquin.cst2335.xu000282.data;
 
-
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -8,17 +7,15 @@ import androidx.room.Query;
 
 import java.util.List;
 
-    @Dao
-    public interface ChatMessageDAO {
+@Dao
+public interface ChatMessageDAO {
 
-        @Insert
-        public long insertMessage(ChatMessage m);
+    @Insert
+    public long insertMessage(ChatMessage m);
 
-        @Query("Select * from ChatMessage")
-        public List<ChatMessage> getAllMessages();
+    @Query("Select * from ChatMessage")
+    public List<ChatMessage> getAllMessages();
 
-        @Delete
-        void deleteMessage(ChatMessage m);
-    }
-
-
+    @Delete
+    void deleteMessage(ChatMessage m);
+}
